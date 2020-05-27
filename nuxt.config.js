@@ -39,8 +39,27 @@ module.exports = {
       ]
     ],
 
+    modules: ['@nuxtjs/markdownit'],
+
+    markdownit: {
+      injected: true,
+    },
+
     axios: {
         baseURL: 'http://elp-back.herokuapp.com',
+    },
+
+    generate: {
+      routes: function() {
+        const fs = require('fs');
+        const path = require('path');
+        return fs.readdirSync('./assets/content/blog').map(file => {
+          return {
+            route: `/blog/${path.parse(file).name}`, // Return the slug
+            payload: require(`./assets/content/blog/${file}`),
+          };
+        });
+      },
     },
 
 }

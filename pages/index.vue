@@ -13,51 +13,21 @@
     <div class="flex flex-col w-1/2 text-center  p-8 rounded bg-white-opacity">      
 
       <div class="flex flex-col justify-center ">
-          <div class="py-2 px-2 h-full flex flex-col justify-center">
+          <div v-for="(offer, key) in offers" :key="key" class="py-2 px-2 h-full flex flex-col justify-center">
             <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-              <div class="w-1/3 bg-cover" style="background-image: url('img/coffee.jpg')">
+              <div class="w-1/3 bg-cover" :style="`background-image: url('${offer.img}')`">
               </div> 
               <div class="w-2/3 p-4">
-                <h1 class="text-gray-900 font-bold text-xl">Кофе из Колумбии</h1>
-                <p class="mt-2 text-gray-600 text-sm">30 мая скидка на великолепный кофе</p>
+                <h1 class="text-gray-900 font-bold text-xl">{{ offer.title }}</h1>
+                <p class="mt-2 text-gray-600 text-sm">{{ offer.description }}</p>
                 
                 <div class="flex item-center justify-between mt-3">
-                  <h1 class="text-gray-700 font-bold text-xl">$ 0.5</h1>
+                  <h1 class="text-gray-700 font-bold text-xl">{{ offer.price }}</h1>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="py-2 px-2 h-full flex flex-col justify-center">
-            <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-              <div class="w-1/3 bg-cover" style="background-image: url('img/lunch.jpg')">
-              </div> 
-              <div class="w-2/3 p-4">
-                <h1 class="text-gray-900 font-bold text-xl">Бизнес ланч</h1>
-                <p class="mt-2 text-gray-600 text-sm">Попробуйте новый питательный...</p>              
-                <div class="flex justify-between text-center">
-                  <h1 class="text-gray-700 font-bold text-xl">$ 10</h1>
-                     </div>
-               
-              </div>
-            </div>
-          </div>
-
-          <div class="py-2 px-2  h-full flex flex-col justify-center">
-            <div class="flex  max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
-              <div class="w-1/3 bg-cover" style="background-image: url('img/pizza.jpg')">
-              </div> 
-              <div class="w-2/3 p-4">
-                <h1 class="text-gray-900 font-bold text-xl">Пицца</h1>
-                <p class="mt-2 text-gray-600 text-sm">Пицца с сицилийским колоритом</p>              
-                <div class="flex item-center justify-between mt-3">
-                  <h1 class="text-gray-700 font-bold text-xl">$ 7</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-      
+       </div>
       
     </div>
     
@@ -79,18 +49,14 @@ export default {
   components: {
     carousel
   },
+  computed: {
+    offers() {
+      return this.$store.state.offers;
+    },
+  }, 
   data() {
        return {
-         offers: [
-           {
-             id: 0,
-             title: '',
-             description: '',
-             img: '',
-             price: ''
-           }
-         ],
-            imgs: [
+          imgs: [
               {
                 id: 0,
                 src: 'img/1.jpg'
