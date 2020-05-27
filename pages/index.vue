@@ -81,6 +81,15 @@ export default {
   },
   data() {
        return {
+         offers: [
+           {
+             id: 0,
+             title: '',
+             description: '',
+             img: '',
+             price: ''
+           }
+         ],
             imgs: [
               {
                 id: 0,
@@ -109,8 +118,10 @@ export default {
             ]
        }
     },
+
   head () {
     return {
+      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
       title: 'this.landingData.settings.title',      
     }
   },

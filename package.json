@@ -13,6 +13,7 @@
         "@fortawesome/vue-fontawesome": "^0.1.9",
         "@neneos/nuxt-animate.css": "0.0.1",
         "@nuxtjs/axios": "^5.10.3",
+        "netlify-cms": "^2.10.49",
         "nuxt": "^2.12.2",
         "nuxt-fontawesome": "^0.4.0"
     },
