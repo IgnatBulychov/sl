@@ -1,5 +1,6 @@
 {
   "title": "Мороженное",
   "description": "Сладкое мороженное",
-  "category": "Дессерты"
+  "category": "Дессерты",
+  "img": "/img/download.jpg"
 }
