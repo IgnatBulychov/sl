@@ -1,5 +1,6 @@
 {
   "title": "Суп",
   "description": "Суп фасолевый",
-  "category": "Первые блюда"
+  "category": "Первые блюда",
+  "img": "/img/lunch.jpg"
 }
