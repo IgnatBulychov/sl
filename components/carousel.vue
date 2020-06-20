@@ -8,12 +8,12 @@
     <div class="w-full h-full flex justify-between relative center-blocks">
       <div class="text-gray-200 text-center w-12 sides">
         <button @click="back()" class=" block w-full h-full remove-outline">
-          <font-awesome-icon :icon="['fas', 'chevron-left']"/>
+          <fa :icon="['fas', 'chevron-left']"/>
         </button>
       </div>      
       <div class="text-gray-200 text-center w-12 sides">
         <button @click="next()"  class=" block w-full h-full remove-outline">
-          <font-awesome-icon :icon="['fas', 'chevron-right']"/>
+          <fa :icon="['fas', 'chevron-right']"/>
         </button>
       </div>
     </div>

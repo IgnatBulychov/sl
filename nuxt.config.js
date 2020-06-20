@@ -23,8 +23,10 @@ module.exports = {
     ],
 
     modules: [
+      '@nuxtjs/markdownit',
       [
         'nuxt-fontawesome', {
+          component: 'fa', 
           imports: [
            {
              set: '@fortawesome/free-solid-svg-icons',
@@ -38,8 +40,6 @@ module.exports = {
         }
       ]
     ],
-
-    modules: ['@nuxtjs/markdownit'],
 
     markdownit: {
       injected: true,

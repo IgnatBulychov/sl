@@ -6,29 +6,44 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    format: 'json'
-    folder: 'assets/content/blog'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    editor:
-      preview: false
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-  - name: 'offer'
+  - name: 'offers'
     label: 'Предложения'
     format: 'json'
-    folder: 'assets/content/offer'
+    folder: 'assets/content/offers'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
       preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'img', name: 'img', widget: 'file' }
-      - { label: 'price', name: 'price', widget: 'string' }
+      - { label: 'Заголовок', name: 'title', widget: 'string' }
+      - { label: 'Описание', name: 'description', widget: 'string' }
+      - { label: 'Изображение', name: 'img', widget: 'file' }
+      - { label: 'Цена', name: 'price', widget: 'string' }
+  - name: 'categories'
+    label: 'Категории блюд'
+    format: 'json'
+    folder: 'assets/content/categories'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Заголовок категории', name: 'title', widget: 'string' }
+  - name: 'items'
+    label: 'Блюда'
+    format: 'json'
+    folder: 'assets/content/items'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Название', name: 'title', widget: 'string' }
+      - { label: 'Описание', name: 'description', widget: 'string' }
+      - { label: 'Изображение', name: 'img', widget: 'file' }
+      - label: "Категория"
+        name: "category"
+        widget: "relation"
+        collection: "categories"
+        searchFields: ["title"]
+        valueField: "title"

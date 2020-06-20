@@ -1,25 +1,20 @@
 export const state = () => ({
-    blogPosts: [],
-    offers: []
+    offers: [],
+    categories: []
   });
   
   export const mutations = {
     initStore(state, data) {
-      state.blogPosts = data.blogPosts;
       state.offers = data.offers;
+      state.categories = data.categoriesWithItems;
     },
   };
   
   export const actions = {
     async nuxtServerInit({ commit }) {
-      let rawBlogPosts = await require.context('~/assets/content/blog/', false, /\.json$/);
-      let rawOffers = await require.context('~/assets/content/offer/', false, /\.json$/);
-      
-      let blogPosts = rawBlogPosts.keys().map(key => {
-        let res = rawBlogPosts(key);
-        res.slug = key.slice(2, -5);
-        return res;
-      });
+      let rawOffers = await require.context('~/assets/content/offers/', false, /\.json$/);
+      let rawCategories = await require.context('~/assets/content/categories/', false, /\.json$/);
+      let rawItems = await require.context('~/assets/content/items/', false, /\.json$/);
 
       let offers = rawOffers.keys().map(key => {
         let res = rawOffers(key);
@@ -27,11 +22,36 @@ export const state = () => ({
         return res;
       });
 
-      let data = {
-        blogPosts: blogPosts,
-        offers: offers
-      }
+      let categories = rawCategories.keys().map(key => {
+        let res = rawCategories(key);
+        res.slug = key.slice(2, -5);
+        return res;
+      });
 
-      await commit('initStore', { blogPosts, offers });
+
+      let items = rawItems.keys().map(key => {
+        let res = rawItems(key);
+        res.slug = key.slice(2, -5);
+        return res;
+      });
+      
+let categoriesWithItems = []
+
+      categories.forEach(function(category, i, arr) {
+        
+        let filter = items.filter(function(item) {
+          return category.title == item.category ;
+        });
+
+        categoriesWithItems.push(
+          {
+            "title": category.title,
+            "items": filter
+          }
+        )
+      });
+      
+     
+      await commit('initStore', { offers, categoriesWithItems });
     },
   };
